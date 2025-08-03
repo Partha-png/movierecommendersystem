@@ -48,3 +48,6 @@ def detect_emotion():
         final_detected_emotion = None
 
     return final_detected_emotion
+if __name__ == '__main__':
+    print(detect_emotion())
+

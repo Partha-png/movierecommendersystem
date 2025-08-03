@@ -31,6 +31,17 @@ def recommend_movies():
     texts = df['overview'] + ' ' + df['tags']
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    emotion_prompts = {
+    'Happy': "I feel happy and want to watch a feel-good uplifting movie.",
+    'Sad': "I feel sad and want to watch a comforting emotional drama.",
+    'Angry': "I feel angry and want to watch an intense action movie.",
+    'Fear': "I feel fearful and want a thrilling suspenseful movie.",
+    'Disgust': "I feel disgusted and want a dark satire or dark comedy.",
+    'Neutral': "I feel neutral and want a balanced, popular movie.",
+    'Surprise': "I feel surprised and want to watch an unpredictable twisty movie."
+}
+
+    prompt = emotion_prompts.get(mood, "I want to watch a movie.")
     encodings = tokenizer.batch_encode_plus(
         texts.tolist(),
         add_special_tokens=True,
@@ -57,9 +68,9 @@ def recommend_movies():
     normalized_embeddings = F.normalize(all_embeddings, p=2, dim=1)
 
     mood_encoding = tokenizer.encode(
-        mood,
+        prompt,
         add_special_tokens=True,
-        max_length=16,
+        max_length=32,
         truncation=True,
         return_tensors='pt'
     ).to('cuda')
@@ -74,5 +85,8 @@ def recommend_movies():
     recommended_indices = top_k.indices.tolist()
 
     recommendations = [df.iloc[i]['title'] for i in recommended_indices]
-
+    for i in recommendations:
+        print(i)
     return mood, recommendations
+if __name__ == "__main__":
+    recommend_movies()
