@@ -79,6 +79,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 ## Project Structure
+
+```text
 movierecommendersystem/
 │
 ├── data/                         # Dataset folder
@@ -97,14 +99,9 @@ movierecommendersystem/
 │
 ├── templates/                    # HTML templates (if used by Streamlit/Flask)
 │
-├── venv/                         # Virtual environment
-│
-├── model_file.h5                 # Saved emotion detection model
-├── data.yaml                     # Data configuration
-├── requirements.txt              # Dependencies
-├── README.md                     # Project documentation
-└── .gitignore                    # Git ignore file
-#Future Work
+├── venv
+```
+## Future Work
 
 Improve emotion classification with deep CNN/ViT models.
 
@@ -114,7 +111,7 @@ Deploy the Streamlit app on Hugging Face Spaces or AWS.
 
 Expand the movie database with live TMDB API integration.
 
-#Citation & Inspiration
+## Citation & Inspiration
 
 TMDB 5000 Movies Dataset
 
@@ -123,3 +120,4 @@ Hugging Face Transformers
 OpenCV + Haar Cascade Face Detection
 
 Streamlit Documentation
+
