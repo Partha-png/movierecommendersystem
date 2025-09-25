@@ -78,7 +78,7 @@ pip install -r requirements.txt
 # 4. Run the Streamlit app
 streamlit run app.py
 ```
-#Project Structure
+## Project Structure
 movierecommendersystem/
 │
 ├── data/                         # Dataset folder
